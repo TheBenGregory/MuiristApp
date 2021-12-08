@@ -8,31 +8,18 @@ export const NavBar = () => {
 
     return (
         <ul className="navbar">
-            <li className="navbar__item">
-                
-            </li>
-            
             {
-                (localStorage.getItem("rare_user_id") !== null) ?
-                    <li className="nav-item">
-                        
-                        <Link className="nav-link" to= "/posts"><button>All Posts</button></Link>
-                        <Link className="nav-link" to="/myPosts"><button>My Posts</button></Link>
-                        <Link className="nav-link" to="/categories"><button>Category Manager</button></Link>
-                        <Link className="nav-link" to="/tags"><button>Tag Manager</button></Link>
+                (localStorage.getItem("muirist_id") !== null) ?
+                    
                         <Link className="nav-link fakeLink"
                             onClick={() => {
-                                localStorage.removeItem("rare_user_id")
+                                localStorage.removeItem("muirist_id")
                                 history.push({ pathname: "/" })
-                            }}
-                        ><button>Logout</button></Link>
-                    </li> :
+                            }}><button>Logout</button></Link>
+                     :
                     <>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/login">Login</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/register">Register</Link>
+                            <Link className="nav-link" to="/login"><button>Login</button></Link>
                         </li>
                     </>
             }        </ul>

@@ -1,65 +1,69 @@
-import React, { useRef, useState } from "react"
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom"
-import "./login.css"
+import React, { useRef } from "react"
+import { Link, useHistory } from "react-router-dom"
+
 
 
 export const Login = () => {
-    const [email, set] = useState("")
-    const existDialog = useRef()
-    const history = useHistory()
-
-    const existingUserCheck = () => {
-        return fetch(`http://localhost:8000/users?email=${email}`)
-            .then(res => res.json())
-            .then(user => user.length ? user[0] : false)
-    }
-
+    const email = useRef()
+    const password = useRef()
     
-
+    const invalidDialog = useRef()
+    const history = useHistory()
     const handleLogin = (e) => {
-        
         e.preventDefault()
-        existingUserCheck()
-            .then(exists => {
-                if (exists) {
-                    localStorage.setItem("muirist_user", exists.id)
+
+        return fetch("http://localhost:8000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                username: email.current.value,
+                password: password.current.value,
+                
+            })
+        })
+            .then(res => res.json())
+            .then(res => {
+                if ("valid" in res && res.valid) {
+                    localStorage.setItem("muirist_id", res.token )
                     history.push("/")
-                } else {
-                    existDialog.current.showModal()
+                }
+                else {
+                    invalidDialog.current.showModal()
                 }
             })
     }
 
     return (
-        <div className="container--login">
-            <dialog className="dialog dialog--auth" ref={existDialog}>
-                <div>User does not exist</div>
-                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+        <main className="container--login">
+            <dialog className="dialog dialog--auth" ref={invalidDialog}>
+                <div>Email or password was not valid.</div>
+                <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
             </dialog>
-    
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Welcome</h1>
+                    <h1>Rare Publishing</h1>
                     <h2>Please sign in</h2>
-                    <div className="input__email">
-                        <label htmlFor="inputEmail"> Please enter your email address </label>
-                        <input type="email"
-                            onChange={evt => set(evt.target.value)}
-                            className="form-control"
-                            placeholder="Email address"
-                            required autoFocus />
-                    </div>
                     <fieldset>
-                        <button className="button" type="submit">
-                            Sign in
-                        </button>
+                        <label htmlFor="inputEmail"> Email address </label>
+                        <input ref={email} type="email" id="email" className="form-control" defaultValue="me@me.com" placeholder="Email address" required autoFocus />
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="inputPassword"> Password </label>
+                        <input ref={password} type="password" id="password" className="form-control" defaultValue="me" placeholder="Password" required />
+                    </fieldset>
+                    <fieldset style={{
+                        textAlign:"center"
+                    }}>
+                        <button className="btn btn-1 btn-sep icon-send" type="submit">Sign In</button>
                     </fieldset>
                 </form>
             </section>
             <section className="link--register">
                 <Link to="/register">Not a member yet?</Link>
             </section>
-        </div>
+        </main>
     )
 }
