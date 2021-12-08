@@ -1,77 +1,91 @@
-import React, { useRef, useState } from "react"
-import { useHistory } from "react-router-dom"
-import "./login.css"
-import "./register.css"
+import React, { useRef } from "react"
+import { Link } from "react-router-dom"
+import { useHistory } from "react-router"
 
-export const Register = () => {
-    const [user, setUser] = useState({})
-    const conflictDialog = useRef()
-    
+
+export const Register = (props) => {
+    const firstName = useRef()
+    const lastName = useRef()
+    const email = useRef()
+    const bio = useRef()
+    const password = useRef()
+    const verifyPassword = useRef()
+    const passwordDialog = useRef()
     const history = useHistory()
 
-    const existingUserCheck = () => {
-        return fetch(`http://localhost:8000/users?email=${user.email}`)
-            .then(res => res.json())
-            .then(user => !!user.length)
-    }
     const handleRegister = (e) => {
         e.preventDefault()
-        existingUserCheck()
-            .then((userExists) => {
-                if (!userExists) {
-                    fetch("http://localhost:8000/users", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(user)
-                    })
-                        .then(res => res.json())
-                        .then(createdUser => {
-                            if (createdUser.hasOwnProperty("id")) {
-                                localStorage.setItem("muirist_user", createdUser.id)
-                                history.push("/")
-                            }
-                        })
-                }
-                else {
-                    conflictDialog.current.showModal()
-                }
-            })
-    }
 
-    const updateUser = (evt) => {
-        const copy = { ...user }
-        copy[evt.target.id] = evt.target.value
-            copy.isProvider = !copy.isProvider
-       
-        setUser(copy)
+        if (password.current.value === verifyPassword.current.value) {
+            const newUser = {
+                "username": email.current.value,
+                "first_name": firstName.current.value,
+                "last_name": lastName.current.value,
+                "email": email.current.value,
+                "password": password.current.value,
+                "createdOn": "2021-12-12"
+            }
+
+            return fetch("http://localhost:8000/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                   
+                },
+                body: JSON.stringify(newUser)
+            })
+                .then(res => res.json())
+                .then(res => {
+                    if ("valid" in res && res.valid) {
+                        localStorage.setItem("muirist_id", res.token)
+                        history.push("/")
+                    }
+                })
+        } else {
+            passwordDialog.current.showModal()
+        }
     }
 
     return (
         <main style={{ textAlign: "center" }}>
-            <dialog className="dialog dialog--password" ref={conflictDialog}>
-                <div>Account with that email address already exists</div>
-                <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
+
+            <dialog className="dialog dialog--password" ref={passwordDialog}>
+                <div>Passwords do not match</div>
+                <button className="button--close" onClick={e => passwordDialog.current.close()}>Close</button>
             </dialog>
 
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register</h1>
-               <div className="login__box"> 
-                    <label htmlFor="name"> Full Name </label>
-                    <input onChange={updateUser}
-                        type="text" id="name" className="form-control"
-                        placeholder="Enter your name" required autoFocus />
-               
-                    <label htmlFor="email"> Email address </label>
-                    <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
-                
-                
-                <div>
-                    <button className="button" type="submit"> Register </button>
-                </div></div>
+                <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
+                <fieldset>
+                    <label htmlFor="firstName"> First Name </label>
+                    <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="lastName"> Last Name </label>
+                    <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="inputEmail"> Email address </label>
+                    <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="inputPassword"> Password </label>
+                    <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="verifyPassword"> Verify Password </label>
+                    <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
+                </fieldset>
+                <fieldset style={{
+                    textAlign: "center"
+                }}>
+                    <button className="btn btn-1 btn-sep icon-send" type="submit">Register</button>
+                </fieldset>
             </form>
+            <section className="link--register">
+                Already registered? <Link to="/login">Login</Link>
+            </section>
         </main>
     )
 }
-
