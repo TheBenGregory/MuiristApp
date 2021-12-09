@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { ApplicationViews } from "./ApplicationViews";
 import { Login } from "./auth/login";
 import { Register } from "./auth/register";
-import { Footer } from "./footer/footer";
+import { Footer } from "./elements/footer";
 import { NavBar } from "./nav/navbar.js"
+import { DarkModeToggle } from "./elements/themeswitch";
 
 
 export const Muirist = () => (
@@ -12,11 +13,12 @@ export const Muirist = () => (
     <Route render={() => {
 
       return <>
-        <Route>
-          <NavBar />
-          <ApplicationViews />
-          <Footer />
-        </Route>
+          <Route>
+            <NavBar />
+            <ApplicationViews />
+            <Footer />
+            {/* <DarkModeToggle /> */}
+          </Route>
       </>
 
     }} />
@@ -38,7 +40,7 @@ export const Muirist = () => (
     }} />
   </>
 )
-
+  
 
 
 export default Muirist;
