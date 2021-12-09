@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, useHistory } from "react-router-dom"
+import { DarkModeToggle } from "../elements/themeswitch"
 
 
 
@@ -21,6 +22,7 @@ export const NavBar = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/login"><button>Login</button></Link>
                         </li>
+                        {/* <li>{DarkModeToggle}</li> */}
                     </>
             }        </ul>
     )
