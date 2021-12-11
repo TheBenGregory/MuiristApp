@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import "./snippets.css"
 import { GlobalStyle } from "../globalStyles";
 import { NewSnippet } from "./snippetModal";
-import { Container, Button } from "./snippetModalStyles";
+import { Container, Button, Headline } from "./snippetModalStyles";
 
 
 export const Snippets = () => {
@@ -15,7 +15,7 @@ export const Snippets = () => {
     return (
         <>
             <div>
-                <header>This Will Be the Name of a US National Park</header>
+                <Headline> This Will Be the Name of a US National Park</Headline>
                 <ul>
                     <li><Container>
                     <li>A list of snippets will go here

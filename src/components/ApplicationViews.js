@@ -20,16 +20,19 @@ export const ApplicationViews = () => {
                 <Route exact path="/parks">
                     <Parks />
                 </Route>
-                <Route exact path="/snippets">
-                    <Snippets />
+                <Route exact path="/snippets/park/:id">
+                    <Snippets /> 
                 </Route>
+                {/* <Route exact path="/snippets">
+                    <Snippets />
+                </Route> */}
                 <Route exact path="/backpack">
                     <Backpack />
                 </Route>
                 <Route exact path="/about">
                     <About />
                 </Route>
-                <Route exact path="/addSnippet">
+                <Route exact path="/add-snippet">
                     <NewSnippet />
                 </Route>
 

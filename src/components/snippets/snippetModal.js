@@ -1,19 +1,19 @@
-import React from "react"
-import { useEffect, useState, useRef, useCallback } from "react"
+import React, { useEffect, useState, useRef, useCallback, } from "react"
+import { useHistory, useParams } from "react-router-dom"
 import { useSpring, animated } from 'react-spring';
-import { addSnippet, getAllSnippets } from "../apiManager/apiManager.js"
+import { createSnippet, getPark } from "../apiManager.js"
 import { Background, ModalWrapper, ModalContent, CloseModalButton  } from "./snippetModalStyles.js"
 
 
 export const NewSnippet = ({ showModal, setShowModal }) => {
+    const [park, setState] = useState([])
+    const { parkId } = useParams()
 
     const [snippet, setSnippets] = useState({
         title: "",
-        publicationDate: "",
         content: "",
-        categoryId: "",
-        imageUrl: "",
-        approved: true
+        parkId: "",
+        muiristId: ""
     })
 
     const handleControlledInputChange = (event) => {
@@ -22,29 +22,30 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
         setSnippets(newSnippet)
     }
 
-    useEffect(
-        () => {
-            getAllSnippets()
-                .then((data) => {
-                    setSnippets(data)
-                })
-        },
-        []
-    )
+  
+    useEffect(() => {
+      if (parkId) {
+        getPark(parkId).then((parkData) => setState({
+          ...parkData,
+          name: parkData.name,
+          location: parkData.location,
+          
+        }))
+      }
+    }, [parkId])
+    
+    
 
     const createNewSnippet = (e) => {
         e.preventDefault()
         const snippetContent = {
-            user: parseInt(localStorage.getItem("muirist_id")),
-            // title: post.title,
-            // publicationDate: post.publication_date,
-            // content: post.content,
-            // categoryId: post.categoryId,
-            // imageUrl: "",
-            // approved: true
+            title: snippet.title,
+            content: snippet.content,
+            parkId: 1
+            
         }
 
-        return addSnippet(snippetContent)
+        return createSnippet(snippetContent)
     }
     const modalRef = useRef();
 
@@ -90,10 +91,8 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
               
               <ModalContent>
               <div className="inputBox"><h3>Add A Snippet</h3></div>
-            <div><input type="text" name="title" placeholder="A cool title here!" value={snippet.title} onChange={handleControlledInputChange}></input></div>
-            <div><input type="date" name="publication_date" value={snippet.publication_date} onChange={handleControlledInputChange}></input></div>
-            <div><input type="text" name="content" placeholder="A cool content here!" value={snippet.content} onChange={handleControlledInputChange}></input></div>
-            
+            <div><input type="text" name="title" placeholder="Title" value={snippet.title} onChange={handleControlledInputChange}></input></div>
+            <div><input type="text" name="content" value={snippet.content} onChange={handleControlledInputChange}></input></div>     
             <button onClick={createNewSnippet}>Save</button>
               </ModalContent>
               <CloseModalButton
