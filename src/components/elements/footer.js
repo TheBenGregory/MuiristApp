@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom"
-import "./footer.css"
+import { Button } from "../globalStyles.js"
+
 
 export const Footer = () => {
     let history = useHistory(-1)
@@ -8,7 +9,8 @@ export const Footer = () => {
     return (
         <>  
             <div> 
-                <button className="foot-link" onClick={history.goBack}>go back</button>
+                <br></br>
+                <Button className="foot-link" onClick={history.goBack}>go back</Button>
             </div>
         </>
     )

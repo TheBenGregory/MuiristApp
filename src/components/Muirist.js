@@ -6,6 +6,7 @@ import { Register } from "./auth/register";
 import { Footer } from "./elements/footer";
 import { NavBar } from "./nav/navbar.js"
 import { DarkModeToggle } from "./elements/themeswitch";
+import { AboutNav } from "./about/aboutNav";
 
 
 export const Muirist = () => (
@@ -16,6 +17,7 @@ export const Muirist = () => (
           <Route>
             <NavBar />
             <ApplicationViews />
+            <AboutNav />
             <Footer />
             {/* <DarkModeToggle /> */}
           </Route>

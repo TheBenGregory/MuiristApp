@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"
+import { Button } from "../globalStyles.js"
 import "./homepage.css"
 
 export const HomePage = () => {
@@ -7,9 +8,7 @@ export const HomePage = () => {
         <>
         <div>
             <header>Muirist</header>
-            <Link className="nav-link" to="/backpack"><button>My Backpack</button></Link>
-            <Link className="nav-link" to="/parks"><button>Explore the Parks</button></Link>
-            <Link className="nav-link" to="/about"><button>About</button></Link>
+            <Link className="nav-link" to="/parks"><Button>Explore the Parks</Button></Link>
             </div>
         </>
     )

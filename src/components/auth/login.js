@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { Link, useHistory } from "react-router-dom"
-
+import { Button } from "../globalStyles.js"
 
 
 export const Login = () => {
@@ -40,7 +40,7 @@ export const Login = () => {
         <main className="container--login">
             <dialog className="dialog dialog--auth" ref={invalidDialog}>
                 <div>Email or password was not valid.</div>
-                <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
+                <Button className="button--close" onClick={e => invalidDialog.current.close()}>Close</Button>
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
@@ -57,7 +57,7 @@ export const Login = () => {
                     <fieldset style={{
                         textAlign:"center"
                     }}>
-                        <button className="btn btn-1 btn-sep icon-send" type="submit">Sign In</button>
+                        <Button className="btn btn-1 btn-sep icon-send" type="submit">Sign In</Button>
                     </fieldset>
                 </form>
             </section>

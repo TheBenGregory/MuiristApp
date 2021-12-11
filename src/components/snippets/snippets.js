@@ -15,7 +15,7 @@ export const Snippets = () => {
     return (
         <>
             <div>
-                <Headline> This Will Be the Name of a US National Park</Headline>
+                <div> This Will Be the Name of a US National Park</div>
                 <ul>
                     <li><Container>
                     <li>A list of snippets will go here
@@ -27,8 +27,7 @@ export const Snippets = () => {
                         <GlobalStyle />
                     </Container></li>
                 </ul>
-                <Link className="nav-link" to="/backpack"><button>My Backpack</button></Link>
-                <Link className="nav-link" to="/about"><button>About</button></Link>
+               
             </div>
         </>
     )
