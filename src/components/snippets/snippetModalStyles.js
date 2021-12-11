@@ -77,3 +77,6 @@ export const Button = styled.button`
   font-size: 24px;
   cursor: pointer;
 `;
+
+export const Headline = styled.header`
+  color: blue`;
