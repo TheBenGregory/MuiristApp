@@ -7,8 +7,7 @@ export const Backpack = () => {
         <>
             <div>
                 Placeholder Backpack
-                <Link className="nav-link" to="/about"><button>About</button></Link>
-                <Link className="nav-link" to="/"><button>Home</button></Link>
+                
             </div>
         </>
     )

@@ -20,12 +20,12 @@ export const ApplicationViews = () => {
                 <Route exact path="/parks">
                     <Parks />
                 </Route>
-                <Route exact path="/snippets/park/:id">
+                <Route exact path="/snippets/:parkId(\d+)">
                     <Snippets /> 
                 </Route>
-                {/* <Route exact path="/snippets">
+                <Route exact path="/snippets">
                     <Snippets />
-                </Route> */}
+                </Route>
                 <Route exact path="/backpack">
                     <Backpack />
                 </Route>
