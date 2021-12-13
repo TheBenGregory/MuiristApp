@@ -44,15 +44,15 @@ export const Login = () => {
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Rare Publishing</h1>
+                    
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
-                        <input ref={email} type="email" id="email" className="form-control" defaultValue="me@me.com" placeholder="Email address" required autoFocus />
+                        <input ref={email} type="email" id="email" className="form-control" defaultValue="JCena@gmail.com" placeholder="Email address" required autoFocus />
                     </fieldset>
                     <fieldset>
                         <label htmlFor="inputPassword"> Password </label>
-                        <input ref={password} type="password" id="password" className="form-control" defaultValue="me" placeholder="Password" required />
+                        <input ref={password} type="password" id="password" className="form-control" defaultValue="pwd" placeholder="Password" required />
                     </fieldset>
                     <fieldset style={{
                         textAlign:"center"
