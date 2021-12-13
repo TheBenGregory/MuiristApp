@@ -1,13 +1,3 @@
-export const getAllSnippets = () => {
-    return fetch("http://localhost:8000/snippets", {
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Token ${localStorage.getItem("muirist_id")}`
-        },
-    })
-        .then(res => res.json())
-}
-
 export const createSnippet = (snippet) => {
    debugger 
     return fetch(`http://localhost:8000/snippets`, {

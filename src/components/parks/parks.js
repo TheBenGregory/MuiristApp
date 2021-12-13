@@ -10,9 +10,11 @@ import { Container } from "./parkModalStyles";
 export const Parks = () => {
 
     const [parks, setParks] = useState([])
+    const [selectedPark,setSelectedPark] = useState([])
     const [showModal, setShowModal] = useState(false);
-    const openModal = () => {
+    const openModal = (parkId) => {
         setShowModal(prev => !prev);
+        setSelectedPark(parkId)
     };
 
     useEffect(() => {
@@ -30,10 +32,10 @@ export const Parks = () => {
                 
                 <ul>
                     <li><Container>
-                        <Button onClick={openModal}>{
-                    parks.map(park => <Button value={park.id}>{park.name}</Button>)
+                        <Button>{
+                    parks.map(park => <Button onClick = {()=>openModal(park.id)}  value={park.id}>{park.name}</Button>)
                 }</Button>
-                        <ParkModal showModal={showModal} setShowModal={setShowModal} />
+                        <ParkModal parkId={selectedPark} showModal={showModal} setShowModal={setShowModal} />
                         <GlobalStyle />
                     </Container></li>
                 </ul><div>
