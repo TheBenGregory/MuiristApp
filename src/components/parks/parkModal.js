@@ -1,14 +1,19 @@
 import React, { useEffect, useState, useRef, useCallback, } from "react"
 import { Link, useHistory } from 'react-router-dom'
 import { useSpring, animated } from 'react-spring';
-import { Background, ModalWrapper, ModalContent, CloseModalButton } from "./parkModalStyles.js"
+import { Background, ModalWrapper, ModalContent, ModalContentRight, CloseModalButton } from "./parkModalStyles.js"
 import { Button } from "../globalStyles.js"
 import { addSnippet, removeSnippet, getAllSnippets } from "../snippets/snippetManager.js";
+import { NewSnippet } from "../snippets/snippetModal.js"
 
-export const ParkModal = ({ showModal, setShowModal, parkId }) => {
+export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
     const [snippets, setSnippets] = useState([])
     const [parkSnippets, setParkSnippets] = useState([])
+    const [contentView, setContentView] = useState([])
     const modalRef = useRef();
+    // const modalSelect = (snippetId) => {
+    //     setSnippetView(snippetId)
+    // }
 
     //BEGIN MODAL SECTION
     const animation = useSpring({
@@ -42,15 +47,7 @@ export const ParkModal = ({ showModal, setShowModal, parkId }) => {
         },
         [keyPress]
     );
-// END OF MODAL SECTION
-
-
-    // useEffect(() => {
-    //     getAllSnippets()
-    //     .then((data) => {
-    //         setSnippets(data)
-    //     })
-    //     }, [])
+    // END OF MODAL SECTION
 
 
     const snippetFetcher = () => {
@@ -62,48 +59,77 @@ export const ParkModal = ({ showModal, setShowModal, parkId }) => {
 
     useEffect(
         () => {
-            
-            
+
+
             if (snippets && parkId) {
-            const onlyParkSnippets = snippets.filter(emp => emp.park.id === parkId)
-            setParkSnippets(onlyParkSnippets) }
-            
+                const onlyParkSnippets = snippets.filter(emp => emp.park.id === parkId)
+                setParkSnippets(onlyParkSnippets)
+            }
+
         }, [parkId])
 
+        // const showContent =  {
+        //         if (e.key === 'Escape' && showModal) {
+        //             setShowModal(false);
+        //             console.log('I pressed');
+        //         }
+        //     },
+        //     [setShowModal, showModal]
+        // );
 
 
-    return (
-        <>
-            {showModal ? (
-                <Background onClick={closeModal} ref={modalRef}>
-                    <animated.div style={animation}>
-                        <ModalWrapper showModal={showModal}>
 
-                            <ModalContent>{
-                                parkSnippets.map(snippet => {
-                                    return <section key={snippet.id} className="registration">
-                                        <div className="registration__game"><b>{snippet.title}</b> <i>{snippet.content}</i></div>
-                                        {
-                                            snippet.joined
-                                                ? <Button
-                                                    onClick={() => addSnippet(snippet.id).then(() => snippetFetcher())}
-                                                >Remove</Button>
-                                                : <Button
-                                                    onClick={() => removeSnippet(snippet.id).then(() => snippetFetcher())}
-                                                >Add</Button>
-                                        }
-                                    </section>
-                                })}
-                            </ModalContent>
-                            <CloseModalButton
-                                aria-label='Close modal'
-                                onClick={() => setShowModal(prev => !prev)}
-                            />
-                        </ModalWrapper>
-                    </animated.div>
-                </Background>
-            ) : null}
 
-        </>
-    )
+return (
+    <>
+        {showModal ? (
+            <Background onClick={closeModal} ref={modalRef}>
+                <animated.div style={animation}>
+                    <ModalWrapper showModal={showModal}>
+
+                        <ModalContent>{
+                            parkSnippets.map(snippet => {
+                                return <section key={snippet.id}>
+                                    <div>
+                                        <div>
+                                           <Button onClick={() => setContentView(!contentView)} value={snippet.id}>{snippet.title}</Button>
+                                        </div>
+                                        
+
+                                    </div>
+                                </section>
+                            }
+                            )}
+                        </ModalContent>
+                        <ModalContentRight>{
+                            contentView ?
+                            parkSnippets.map(snippet => {
+                                return <section key={snippet.id}>
+                                    <div>
+                                        <Button onClick={showContent}>
+                                            <i>{snippet.content}</i>
+                                        </Button>
+
+                                    </div>
+                                    <Button
+                                    onClick={() => addSnippet(snippets.id).then(() => snippetFetcher())}
+                                >Add to Backpack</Button>
+                            
+                                </section>
+                            }
+                            ): null} 
+                            
+                        </ModalContentRight>
+                        <CloseModalButton
+                            aria-label='Close modal'
+                            onClick={() => setShowModal(prev => !prev)}
+                        />
+                    </ModalWrapper>
+                </animated.div>
+            </Background>
+        ) : null
+        }
+
+    </>
+)
 }

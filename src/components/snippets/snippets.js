@@ -14,20 +14,10 @@ export const Snippets = () => {
 
     return (
         <>
-            <div>
-                <div> This Will Be the Name of a US National Park</div>
-                <ul>
-                    <li><Container>
-                    <li>A list of snippets will go here
-                    </li>
-                    <li><Link className="nav-link" to="/parks">This will be a snippet</Link>
-                    </li>
+            <div>   
                         <Button onClick={openModal}>Add a Snippet</Button>
                         <NewSnippet showModal={showModal} setShowModal={setShowModal} />
-                        <GlobalStyle />
-                    </Container></li>
-                </ul>
-               
+                        
             </div>
         </>
     )

@@ -1,5 +1,5 @@
 export const createSnippet = (snippet) => {
-   debugger 
+    
     return fetch(`http://localhost:8000/snippets`, {
         method: "POST",
         headers: {
@@ -24,8 +24,18 @@ export const getAllParks = () => {
 export const getPark = (parkId) => {
     return fetch(`http://localhost:8000/parks/${parkId}`, {
         headers: {
-            "Authorization": `Token ${localStorage.getItem("muirist_token")}`
+            "Authorization": `Token ${localStorage.getItem("muirist_id")}`
         }
+    })
+        .then(response => response.json())
+}
+
+export const getAllLists = () => {
+    return fetch(`http://localhost:8000/lists`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("muirist_id")}`
+        }
+    
     })
         .then(response => response.json())
 }
