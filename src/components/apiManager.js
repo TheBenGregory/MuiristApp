@@ -40,3 +40,13 @@ export const getAllLists = () => {
         .then(response => response.json())
 }
 
+export const getMyLists = () => {
+    return fetch(`http://localhost:8000/lists/myLists`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("muirist_id")}`
+        }
+    
+    })
+        .then(response => response.json())
+}
+
