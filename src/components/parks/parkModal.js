@@ -11,10 +11,22 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
     const [parkSnippets, setParkSnippets] = useState([])
     const [contentView, setContentView] = useState([])
     const modalRef = useRef();
+    
     // const modalSelect = (snippetId) => {
     //     setSnippetView(snippetId)
     // }
+    // const [addSnippet, setAddSnippets] = useState({
+    //     title: "",
+    //     content: "",
+    //     parkId: "",
+    //     muiristId: ""
+    // })
 
+    // const handleControlledInputChange = (event) => {
+    //     const addSnippetBag = Object.assign({}, snippets)
+    //     addSnippet[event.target.name] = event.target.value
+    //     setAddSnippets(addSnippetBag)
+    // }
     //BEGIN MODAL SECTION
     const animation = useSpring({
         config: {
@@ -112,7 +124,7 @@ return (
 
                                     </div>
                                     <Button
-                                    onClick={() => addSnippet(snippets.id).then(() => snippetFetcher())}
+                                    onClick={() => addSnippet(snippet.id).then(() => snippetFetcher())}
                                 >Add to Backpack</Button>
                             
                                 </section>

@@ -33,8 +33,8 @@ export const removeSnippet = snippetId => {
 
 //addSnippet refers to adding to the users backpack != create
 
-export const addSnippet = snippetId => {
-    return fetch(`http://localhost:8000/snippets/${ snippetId }`, {
+export const addSnippet = (Id) => {
+    return fetch(`http://localhost:8000/snippets/${Id}/addToBackpack`, {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("muirist_id")}`
