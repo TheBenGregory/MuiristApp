@@ -42,6 +42,7 @@ export const Parks = () => {
                 </ul><div>
                     {/* <Button onClick={openModal}>Add a Snippet</Button>
                     <NewSnippet showModal={showModal} setShowModal={setShowModal} /> */}
+                    <Link className="nav-link" to="/parks"><Button>Explore the Parks</Button></Link>
                 </div>
 
             </div>

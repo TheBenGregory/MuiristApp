@@ -10,39 +10,34 @@ import { AboutNav } from "./about/aboutNav";
 
 
 export const Muirist = () => (
+
   <>
-    <Route render={() => {
+    <Route
+      render={() => {
+        if (localStorage.getItem("muirist_id")) {
+          return (
+            <>
+              <NavBar />
+              <ApplicationViews />
+              <AboutNav />
+              <Footer />
+            </>
+          );
+        } else {
+          return <Redirect to="/login" />;
+        }
+      }}
+    />
 
-      return <>
-          <Route>
-            <NavBar />
-            <ApplicationViews />
-            <AboutNav />
-            <Footer />
-            {/* <DarkModeToggle /> */}
-          </Route>
-      </>
-
-    }} />
-
-    <Route path="/login" render={() => {
-      if (localStorage.getItem("muirist_user")) {
-        return <Redirect to="/" />
-      } else {
-        return <Login />
-      }
-    }} />
-
-    <Route path="/register" render={() => {
-      if (localStorage.getItem("muirist_user")) {
-        return <Redirect to="/" />
-      } else {
-        return <Register />
-      }
-    }} />
+    <Route exact path="/login">
+      <Login />
+    </Route>
+    <Route exact path="/register">
+      <Register />
+    </Route>
   </>
 )
-  
+
 
 
 export default Muirist;

@@ -19,6 +19,7 @@ export const Snippets = () => {
                         <NewSnippet showModal={showModal} setShowModal={setShowModal} />
                         
             </div>
+            <div><Link className="nav-link" to="/parks"><Button>Explore the Parks</Button></Link></div>
         </>
     )
 }
