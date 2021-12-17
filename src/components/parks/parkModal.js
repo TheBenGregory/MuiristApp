@@ -11,22 +11,12 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
     const [parkSnippets, setParkSnippets] = useState([])
     const [contentView, setContentView] = useState([])
     const modalRef = useRef();
-    
-    // const modalSelect = (snippetId) => {
-    //     setSnippetView(snippetId)
-    // }
-    // const [addSnippet, setAddSnippets] = useState({
-    //     title: "",
-    //     content: "",
-    //     parkId: "",
-    //     muiristId: ""
-    // })
 
-    // const handleControlledInputChange = (event) => {
-    //     const addSnippetBag = Object.assign({}, snippets)
-    //     addSnippet[event.target.name] = event.target.value
-    //     setAddSnippets(addSnippetBag)
-    // }
+    //BUTTON HANDLER//
+    
+    
+    //BUTTON HANDLER//
+
     //BEGIN MODAL SECTION
     const animation = useSpring({
         config: {
@@ -80,68 +70,68 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
 
         }, [parkId])
 
-        // const showContent =  {
-        //         if (e.key === 'Escape' && showModal) {
-        //             setShowModal(false);
-        //             console.log('I pressed');
-        //         }
-        //     },
-        //     [setShowModal, showModal]
-        // );
+    // const showContent =  {
+    //         if (e.key === 'Escape' && showModal) {
+    //             setShowModal(false);
+    //             console.log('I pressed');
+    //         }
+    //     },
+    //     [setShowModal, showModal]
+    // );
 
 
 
 
-return (
-    <>
-        {showModal ? (
-            <Background onClick={closeModal} ref={modalRef}>
-                <animated.div style={animation}>
-                    <ModalWrapper showModal={showModal}>
+    return (
+        <>
+            {showModal ? (
+                <Background onClick={closeModal} ref={modalRef}>
+                    <animated.div style={animation}>
+                        <ModalWrapper showModal={showModal}>
 
-                        <ModalContent>{
-                            parkSnippets.map(snippet => {
-                                return <section key={snippet.id}>
-                                    <div>
+                            <ModalContent>{
+                                parkSnippets.map(snippet => {
+                                    return <section key={snippet.id}>
                                         <div>
-                                           <Button onClick={() => setContentView(!contentView)} value={snippet.id}>{snippet.title}</Button>
+                                            <div>
+                                                <Button onClick={() => setContentView(!contentView)} value={snippet.id}>{snippet.title}</Button>
+                                            </div>
+
+
                                         </div>
-                                        
+                                    </section>
+                                }
+                                )}
+                            </ModalContent>
+                            <ModalContentRight>{
+                                contentView ?
+                                    parkSnippets.map(snippet => {
+                                        return <section key={snippet.id}>
+                                            <div>
+                                                <Button onClick={showContent}>
+                                                    <i>{snippet.content}</i>
+                                                </Button>
 
-                                    </div>
-                                </section>
-                            }
-                            )}
-                        </ModalContent>
-                        <ModalContentRight>{
-                            contentView ?
-                            parkSnippets.map(snippet => {
-                                return <section key={snippet.id}>
-                                    <div>
-                                        <Button onClick={showContent}>
-                                            <i>{snippet.content}</i>
-                                        </Button>
+                                            </div>
+                                            <Button id="btn"
+                                                onClick={{handleClick}, () => addSnippet(snippet.id).then(() => snippetFetcher())}
+                                            >Add to Backpack</Button>
 
-                                    </div>
-                                    <Button
-                                    onClick={() => addSnippet(snippet.id).then(() => snippetFetcher())}
-                                >Add to Backpack</Button>
-                            
-                                </section>
-                            }
-                            ): null} 
-                            
-                        </ModalContentRight>
-                        <CloseModalButton
-                            aria-label='Close modal'
-                            onClick={() => setShowModal(prev => !prev)}
-                        />
-                    </ModalWrapper>
-                </animated.div>
-            </Background>
-        ) : null
-        }
+                                        </section>
+                                    }
+                                    ) : null}
 
-    </>
-)
+                            </ModalContentRight>
+                            <CloseModalButton
+                                aria-label='Close modal'
+                                onClick={() => setShowModal(prev => !prev)}
+                            />
+                        </ModalWrapper>
+                    </animated.div>
+                </Background>
+            ) : null
+            }
+
+        </>
+    )
 }
