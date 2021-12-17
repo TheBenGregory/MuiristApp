@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import "./backpack.css"
 import { getAllLists } from '../apiManager.js'
+import { Button } from '../globalStyles.js'
+import { NewSnippet } from "../snippets/snippetModal.js"
 
 export const Backpack = () => {
 
@@ -38,6 +40,9 @@ export const Backpack = () => {
                     {
                         snippet.map(snippetList => <div value={snippetList?.id}>{snippetList?.title}</div>)
                     }</li></ul>
+
+                     <Button onClick={ NewSnippet }>Add a Snippet</Button>
+                     
             </div>
         </>
     )
