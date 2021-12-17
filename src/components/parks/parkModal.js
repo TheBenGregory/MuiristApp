@@ -114,7 +114,7 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
 
                                             </div>
                                             <Button id="btn"
-                                                onClick={{handleClick}, () => addSnippet(snippet.id).then(() => snippetFetcher())}
+                                                onClick={() => addSnippet(snippet.id).then(() => snippetFetcher())}
                                             >Add to Backpack</Button>
 
                                         </section>
@@ -131,7 +131,7 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
                 </Background>
             ) : null
             }
-
+            <Button><Link to="/snippets">Add Snippet</Link></Button>
         </>
     )
 }

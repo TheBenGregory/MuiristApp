@@ -22,7 +22,7 @@ export const getAllSnippets = () => {
 //removeSnippet refers to removing from the users backpack != delete
 
 export const removeSnippet = snippetId => {
-    return fetch(`http://localhost:8000/snippets/${ snippetId }`, {
+    return fetch(`http://localhost:8000/snippets/${snippetId}`, {
         method: "DELETE",
         headers:{
             "Authorization": `Token ${localStorage.getItem("muirist_id")}`
@@ -33,8 +33,8 @@ export const removeSnippet = snippetId => {
 
 //addSnippet refers to adding to the users backpack != create
 
-export const addSnippet = (Id) => {
-    return fetch(`http://localhost:8000/snippets/${Id}/addToBackpack`, {
+export const addSnippet = (snippetId) => {
+    return fetch(`http://localhost:8000/snippets/${snippetId}/addToBackpack`, {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("muirist_id")}`
