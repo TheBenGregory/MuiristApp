@@ -1,0 +1,7 @@
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: right;
+    padding-right: 2%;
+
+}

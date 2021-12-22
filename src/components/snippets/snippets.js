@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import "./snippets.css"
-import { GlobalStyle } from "../globalStyles";
+import { GlobalStyle, Content } from "../globalStyles";
 import { NewSnippet } from "./snippetModal";
 import { Container, Button, Headline } from "./snippetModalStyles";
 
@@ -19,6 +19,7 @@ export const Snippets = () => {
                         <NewSnippet showModal={showModal} setShowModal={setShowModal} />
                         
             </div>
+            <Link className="nav-link" to="/parks"><Content><Button>Explore the Parks</Button></Content></Link>
         </>
     )
 }

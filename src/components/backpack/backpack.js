@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import "./backpack.css"
-import { getAllLists } from '../apiManager.js'
-import { Button } from '../globalStyles.js'
+import { getMyLists } from '../apiManager.js'
+import { Button, Header } from '../globalStyles.js'
 import { NewSnippet } from "../snippets/snippetModal.js"
 
 export const Backpack = () => {
 
     const [lists, setLists] = useState([])
     const [snippet, setSnippets] = useState([])
-
     useEffect(() => {
-        if (lists.length != 0) {
+            if (lists.length != 0) {
             let copy = [...snippet]
             for (let list of lists) {
                 // debugger
@@ -23,9 +22,11 @@ export const Backpack = () => {
             setSnippets(copy)
         }
     }, [lists])
+    
 
+    
     useEffect(() => {
-        getAllLists()
+        getMyLists()
             .then((data) => {
                 setLists(data)
             })
@@ -34,16 +35,24 @@ export const Backpack = () => {
     return (
         <>
             <div>
-                Placeholder Backpack
+                <Header>All My Snippets</Header>
+
+                    {/* {lists.filter(list => list.Snippets.park.id).map(filteredList => (
+                        <li>
+                            {filteredList}
+                        </li>
+                    ))
+                    } */}
 
                 <ul><li>
                     {
                         snippet.map(snippetList => <div value={snippetList?.id}>{snippetList?.title}</div>)
                     }</li></ul>
 
-                     <Button onClick={ NewSnippet }>Add a Snippet</Button>
+                    
                      
             </div>
+            <div><Link className="nav-link" to="/parks"><Button>Explore the Parks</Button></Link></div>
         </>
     )
 }

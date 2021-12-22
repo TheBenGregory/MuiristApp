@@ -2,7 +2,7 @@ import React from "react"
 import { Link, useHistory } from "react-router-dom"
 import { DarkModeToggle } from "../elements/themeswitch"
 import { Button } from "../globalStyles.js"
-
+import "./navbar.css"
 
 export const NavBar = () => {
     const history = useHistory()
@@ -12,11 +12,9 @@ export const NavBar = () => {
             {
                 (localStorage.getItem("muirist_id") !== null) ?
                     
-                        <Link className="nav-link fakeLink"
-                            onClick={() => {
+                       <Button onClick={() => {
                                 localStorage.removeItem("muirist_id")
-                                history.push({ pathname: "/" })
-                            }}><Button>Logout</Button></Link>
+                                history.push({ pathname: "/" })}}>Logout</Button>
                      :
                     <>
                         <li className="nav-item">

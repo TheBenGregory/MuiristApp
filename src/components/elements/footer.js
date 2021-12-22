@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom"
-import { Button } from "../globalStyles.js"
+import { Button, Content } from "../globalStyles.js"
 
 
 export const Footer = () => {
@@ -10,7 +10,7 @@ export const Footer = () => {
         <>  
             <div> 
                 <br></br>
-                <Button className="foot-link" onClick={history.goBack}>go back</Button>
+                <Content><Button className="foot-link" onClick={history.goBack}>go back</Button></Content>
             </div>
         </>
     )
