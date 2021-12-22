@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import "./backpack.css"
 import { getMyLists } from '../apiManager.js'
-import { Button } from '../globalStyles.js'
+import { Button, Header } from '../globalStyles.js'
 import { NewSnippet } from "../snippets/snippetModal.js"
 
 export const Backpack = () => {
@@ -35,7 +35,7 @@ export const Backpack = () => {
     return (
         <>
             <div>
-                All My Snippets
+                <Header>All My Snippets</Header>
 
                     {/* {lists.filter(list => list.Snippets.park.id).map(filteredList => (
                         <li>

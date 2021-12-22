@@ -2,7 +2,7 @@ import React from "react"
 import { Link, useHistory } from "react-router-dom"
 import { DarkModeToggle } from "../elements/themeswitch"
 import { Button } from "../globalStyles.js"
-
+import "./navbar.css"
 
 export const NavBar = () => {
     const history = useHistory()

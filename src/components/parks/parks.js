@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import "./parks.css"
 import { getAllParks } from '../apiManager.js'
-import { GlobalStyle, Button } from "../globalStyles";
+import { GlobalStyle, Button, Header, Content } from "../globalStyles";
 import { ParkModal } from "./parkModal";
 import { Container } from "./parkModalStyles";
 import { NewSnippet } from "../snippets/snippetModal.js"
@@ -29,7 +29,7 @@ export const Parks = () => {
     return (
         <>
             <div>
-                <header>National Parks</header>
+                <Header>National Parks</Header>
 
                 <ul>
                     <li><Container>
@@ -42,7 +42,7 @@ export const Parks = () => {
                 </ul><div>
                     {/* <Button onClick={openModal}>Add a Snippet</Button>
                     <NewSnippet showModal={showModal} setShowModal={setShowModal} /> */}
-                    <Link className="nav-link" to="/parks"><Button>Explore the Parks</Button></Link>
+                    <Link className="nav-link" to="/parks"><Content><Button>Explore the Parks</Button></Content></Link>
                 </div>
 
             </div>

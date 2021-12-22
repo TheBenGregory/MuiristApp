@@ -16,7 +16,7 @@ export const Button = styled.button`
   flex-direction: column;
   align-items: center;
   padding: 6px 14px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  font-family: nps_router;
   border-radius: 6px;
   border: none;
 
@@ -27,6 +27,20 @@ export const Button = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
 `;
+
+export const Header = styled.header`
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  font-family: nps_router;
+  font-size: 55px;
+  `;
+
+  export const Content = styled.div`
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  `; 
 // .button-12:focus {
 //   box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
 //   outline: 0;
