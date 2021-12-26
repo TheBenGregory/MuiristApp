@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import "./snippets.css"
-import { GlobalStyle, Content } from "../globalStyles";
+import { Button, Content } from "../globalStyles";
 import { NewSnippet } from "./snippetModal";
-import { Container, Button, Headline } from "./snippetModalStyles";
+import { Container, Headline } from "./snippetModalStyles";
 
 
 export const Snippets = () => {
@@ -14,10 +14,10 @@ export const Snippets = () => {
 
     return (
         <>
-            <div>   
+            <div>   <Container>
                         <Button onClick={openModal}>Add a Snippet</Button>
                         <NewSnippet showModal={showModal} setShowModal={setShowModal} />
-                        
+                        </Container>
             </div>
             <Link className="nav-link" to="/parks"><Content><Button>Explore the Parks</Button></Content></Link>
         </>

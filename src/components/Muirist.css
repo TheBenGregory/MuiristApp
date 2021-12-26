@@ -28,10 +28,4 @@
   color: #61dafb;
 }
 
-@font-face {
-  font-family: national-park;
-  src: url(./assets/fonts/nationalpark-heavy.ttf);
-  font-style: normal;
-  font-weight: 100
-}
 

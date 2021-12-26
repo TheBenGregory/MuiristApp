@@ -10,14 +10,9 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
     const [snippets, setSnippets] = useState([])
     const [parkSnippets, setParkSnippets] = useState([])
     const [contentView, setContentView] = useState([])
+    
+    // MODAL CONTROL
     const modalRef = useRef();
-
-    //BUTTON HANDLER//
-    
-    
-    //BUTTON HANDLER//
-
-    //BEGIN MODAL SECTION
     const animation = useSpring({
         config: {
             duration: 250
@@ -49,7 +44,7 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
         },
         [keyPress]
     );
-    // END OF MODAL SECTION
+    // MODAL CONTROL
 
 
     const snippetFetcher = () => {

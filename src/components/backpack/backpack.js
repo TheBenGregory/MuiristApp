@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import "./backpack.css"
 import { getMyLists } from '../apiManager.js'
-import { Button, Header } from '../globalStyles.js'
+import { Button, Header, Content } from '../globalStyles.js'
 import { NewSnippet } from "../snippets/snippetModal.js"
 
 export const Backpack = () => {
@@ -34,14 +34,15 @@ export const Backpack = () => {
 
     return (
         <>
-            <div>
-                <Header>All My Snippets</Header>
+                <Header>My Snippets</Header>
+        <div className="main">
+            <Content>
 
                     {/* {lists.filter(list => list.Snippets.park.id).map(filteredList => (
                         <li>
-                            {filteredList}
+                        {filteredList}
                         </li>
-                    ))
+                        ))
                     } */}
 
                 <ul><li>
@@ -51,8 +52,9 @@ export const Backpack = () => {
 
                     
                      
+            </Content>
             </div>
-            <div><Link className="nav-link" to="/parks"><Button>Explore the Parks</Button></Link></div>
+            <Link className="nav-link" to="/parks"><Button>Explore the Parks</Button></Link>
         </>
     )
 }

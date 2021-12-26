@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef, useCallback, } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { useSpring, animated } from 'react-spring';
 import { createSnippet, getPark, getAllParks } from "../apiManager.js"
-import { Parks } from "../parks/parks.js";
 import { Background, ModalWrapper, ModalContent, CloseModalButton } from "./snippetModalStyles.js"
 
 
@@ -55,7 +54,7 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
 
     return createSnippet(snippetContent)
   }
-
+  
   //MODAL CONTROL//
   const modalRef = useRef();
 

@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url("/src/assets/images/Muirist\ Background.png");
+  margin: 0;
+
 }
 
 code {
@@ -19,3 +22,4 @@ code {
   font-style: normal;
 
 }
+
