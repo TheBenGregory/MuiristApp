@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import "./parks.css"
 import { getAllParks } from '../apiManager.js'
-import { GlobalStyle, Button, Header, Content } from "../globalStyles";
+import { GlobalStyle, Button, Content } from "../globalStyles";
 import { ParkModal } from "./parkModal";
 import { Container } from "./parkModalStyles";
-import { NewSnippet } from "../snippets/snippetModal.js"
+
 
 export const Parks = () => {
 
@@ -29,7 +29,7 @@ export const Parks = () => {
     return (
         <>
             <div>
-                <Header>National Parks</Header>
+                
 
                 <ul>
                     <li><Container>
