@@ -28,14 +28,14 @@ export const Parks = () => {
 
     return (
         <>
-            <div>
+            <div className="park__list">
                 
-
+            <div></div>
                 <ul>
                     <li><Container>
-                        <Button>{
-                            parks.map(park => <Button onClick={() => openModal(park.id)} value={park.id}>{park.name}</Button>)
-                        }</Button>
+                        <div>{
+                            parks.slice(0,8).map(park => <Button onClick={() => openModal(park.id)} value={park.id}>{park.name}</Button>)
+                        }</div>
                         <ParkModal parkId={selectedPark} showModal={showModal} setShowModal={setShowModal} />
                         <GlobalStyle />
                     </Container></li>
@@ -44,7 +44,7 @@ export const Parks = () => {
                     <NewSnippet showModal={showModal} setShowModal={setShowModal} /> */}
                     <Link className="nav-link" to="/parks"><Content><Button>Explore the Parks</Button></Content></Link>
                 </div>
-
+                
             </div>
         </>
     )

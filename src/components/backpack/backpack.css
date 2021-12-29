@@ -3,3 +3,9 @@
     align-content: center;
     justify-content: center;
 }
+
+.btn_snippet{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

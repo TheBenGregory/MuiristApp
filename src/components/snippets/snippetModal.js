@@ -42,22 +42,10 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
 
   
 
-  const createNewSnippet = (e) => {
-    e.preventDefault()
-    const snippetContent = {
-      muiristId: parseInt(localStorage.getItem("muirist_id")),
-      title: snippet.title,
-      content: snippet.content,
-      parkId: snippet.park
-
-    }
-
-    return createSnippet(snippetContent)
-  }
   
   //MODAL CONTROL//
   const modalRef = useRef();
-
+  
   const animation = useSpring({
     config: {
       duration: 250
@@ -71,7 +59,7 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
       setShowModal(false);
     }
   };
-
+  
   const keyPress = useCallback(
     e => {
       if (e.key === 'Escape' && showModal) {
@@ -80,16 +68,31 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
       }
     },
     [setShowModal, showModal]
-  );
-
-  useEffect(
-    () => {
-      document.addEventListener('keydown', keyPress);
-      return () => document.removeEventListener('keydown', keyPress);
+    );
+    
+    useEffect(
+      () => {
+        document.addEventListener('keydown', keyPress);
+        return () => document.removeEventListener('keydown', keyPress);
     },
     [keyPress]
   );
- //MODAL CONTROL//
+  //MODAL CONTROL//
+
+  const createNewSnippet = (e) => {
+    e.preventDefault()
+    const snippetContent = {
+      muiristId: parseInt(localStorage.getItem("muirist_id")),
+      title: snippet.title,
+      content: snippet.content,
+      parkId: snippet.park
+
+    }
+
+    return createSnippet(snippetContent);
+    closeModal()
+    
+  }
 
   return (
     <>
@@ -109,7 +112,7 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
             </select></div>
                 <div><input type="text" name="title" placeholder="Title" value={snippet.title} onChange={handleControlledInputChange}></input></div>
                 <div><input type="text" name="content" value={snippet.content} onChange={handleControlledInputChange}></input></div>
-                <button onClick={createNewSnippet}>Save</button>
+                {createNewSnippet ? <button onClick={createNewSnippet}>Save</button> : <button>Saved!</button>}
               </ModalContent>
               <CloseModalButton
                 aria-label='Close modal'

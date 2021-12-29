@@ -1,0 +1,10 @@
+.park__list{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+li{
+    display: inline-block
+}

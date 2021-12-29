@@ -126,7 +126,7 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
                 </Background>
             ) : null
             }
-            <Button><Link to="/snippets">Add Snippet</Link></Button>
+            
         </>
     )
 }
