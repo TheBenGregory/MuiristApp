@@ -63,7 +63,7 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
                 setParkSnippets(onlyParkSnippets)
             }
 
-        }, [parkId])
+        }, [parkId, snippets])
 
     // const showContent =  {
     //         if (e.key === 'Escape' && showModal) {
@@ -108,9 +108,11 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
                                                 </Button>
 
                                             </div>
+                                           { snippet.added ? <div>Added!</div>
+                                            : 
                                             <Button id="btn"
                                                 onClick={() => addSnippet(snippet.id).then(() => snippetFetcher())}
-                                            >Add to Backpack</Button>
+                                            >Add to Backpack</Button>}
 
                                         </section>
                                     }
