@@ -14,8 +14,10 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
     title: "",
     content: "",
     parkId: ""
-    
+
   })
+
+  const [savedSnippet, setSavedSnippet] = useState(false)
 
   const handleControlledInputChange = (event) => {
     const newSnippet = Object.assign({}, snippet)
@@ -24,10 +26,10 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
   }
   useEffect(() => {
     getAllParks()
-        .then((data) => {
-            setParks(data)
-        })
-}, [])
+      .then((data) => {
+        setParks(data)
+      })
+  }, [])
 
   // useEffect(() => {
   //   if (parkId) {
@@ -40,12 +42,12 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
   //   }
   // }, [parkId])
 
-  
 
-  
+
+
   //MODAL CONTROL//
   const modalRef = useRef();
-  
+
   const animation = useSpring({
     config: {
       duration: 250
@@ -57,23 +59,35 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
   const closeModal = e => {
     if (modalRef.current === e.target) {
       setShowModal(false);
-    }
+      setSnippets({
+        muiristId: "",
+        title: "",
+        content: "",
+        parkId: ""});
+      setSavedSnippet(false);
+      }
   };
-  
+
   const keyPress = useCallback(
     e => {
       if (e.key === 'Escape' && showModal) {
         setShowModal(false);
+        setSnippets({
+        muiristId: "",
+        title: "",
+        content: "",
+        parkId: ""});
+      setSavedSnippet(false);
         console.log('I pressed');
       }
     },
     [setShowModal, showModal]
-    );
-    
-    useEffect(
-      () => {
-        document.addEventListener('keydown', keyPress);
-        return () => document.removeEventListener('keydown', keyPress);
+  );
+
+  useEffect(
+    () => {
+      document.addEventListener('keydown', keyPress);
+      return () => document.removeEventListener('keydown', keyPress);
     },
     [keyPress]
   );
@@ -89,9 +103,10 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
 
     }
 
+    setSavedSnippet(true)
     return createSnippet(snippetContent);
-    closeModal()
-    
+
+
   }
 
   return (
@@ -104,19 +119,25 @@ export const NewSnippet = ({ showModal, setShowModal }) => {
               <ModalContent>
                 <div className="inputBox"><h3>Add A Snippet</h3></div>
                 <div><select name="park" value={parks.id} onChange={(event) => handleControlledInputChange(event)}>
-                <option value="0">Select Park</option>
-                {
+                  <option value="0">Select Park</option>
+                  {
                     parks.map(park => <option value={park.id}>{park.name}</option>)
-                }
-                
-            </select></div>
+                  }
+
+                </select></div>
                 <div><input type="text" name="title" placeholder="Title" value={snippet.title} onChange={handleControlledInputChange}></input></div>
                 <div><input type="text" name="content" value={snippet.content} onChange={handleControlledInputChange}></input></div>
-                {createNewSnippet ? <button onClick={createNewSnippet}>Save</button> : <button>Saved!</button>}
+                {savedSnippet ? <button>Saved!</button> : <button onClick={createNewSnippet}>Save</button>}
               </ModalContent>
               <CloseModalButton
                 aria-label='Close modal'
-                onClick={() => setShowModal(prev => !prev)}
+                onClick={(event) => {setShowModal(false);
+                  setSnippets({
+                    muiristId: "",
+                    title: "",
+                    content: "",
+                    parkId: ""});
+                  setSavedSnippet(false);}}
               />
             </ModalWrapper>
           </animated.div>
