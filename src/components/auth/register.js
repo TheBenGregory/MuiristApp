@@ -26,7 +26,7 @@ export const Register = (props) => {
                 "createdOn": "2021-12-12"
             }
 
-            return fetch("http://localhost:8000/register", {
+            return fetch("https://muirist.herokuapp.com/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
