@@ -1,5 +1,5 @@
 export const getAllSnippets = () => {
-    return fetch("http://localhost:8000/snippets", {
+    return fetch("https://muirist-server.herokuapp.com/snippets", {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Token ${localStorage.getItem("muirist_id")}`
@@ -9,7 +9,7 @@ export const getAllSnippets = () => {
 }
 
   export const createSnippet = (snippet) => {
-    return fetch("http://localhost:8000/snippets", {
+    return fetch("https://muirist-server.herokuapp.com/snippets", {
       method: "POST",
       headers: {
         "Authorization": `Token ${localStorage.getItem("muirist_id")}`,
@@ -22,7 +22,7 @@ export const getAllSnippets = () => {
 //removeSnippet refers to removing from the users backpack != delete
 
 export const removeSnippet = snippetId => {
-    return fetch(`http://localhost:8000/snippets/${snippetId}`, {
+    return fetch(`https://muirist-server.herokuapp.com/snippets/${snippetId}`, {
         method: "DELETE",
         headers:{
             "Authorization": `Token ${localStorage.getItem("muirist_id")}`
@@ -34,7 +34,7 @@ export const removeSnippet = snippetId => {
 //addSnippet refers to adding to the users backpack != create
 
 export const addSnippet = (snippetId) => {
-    return fetch(`http://localhost:8000/snippets/${snippetId}/addToBackpack`, {
+    return fetch(`https://muirist-server.herokuapp.com/snippets/${snippetId}/addToBackpack`, {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("muirist_id")}`
@@ -45,7 +45,7 @@ export const addSnippet = (snippetId) => {
 }
 
 export const updateSnippetsFetch = (snippet) => {
-    return fetch(`http://localhost:8000/snippets/${snippet.id}`, {
+    return fetch(`https://muirist-server.herokuapp.com/snippets/${snippet.id}`, {
       method: "PUT",
       headers: {
         "Authorization": `Token ${localStorage.getItem("muirist_id")}`,
