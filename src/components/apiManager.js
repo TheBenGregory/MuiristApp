@@ -1,5 +1,5 @@
 export const server  = {
-    base: "http://muirist-server.herokuapp.com"
+    base: "https://muirist-server.herokuapp.com"
 }
 
 export const createSnippet = (snippet) => {
