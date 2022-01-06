@@ -1,7 +1,8 @@
 import React, { useRef } from "react"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router"
-
+import { server } from '../apiManager'
+import { Button } from '../globalStyles'
 
 export const Register = (props) => {
     const firstName = useRef()
@@ -26,7 +27,7 @@ export const Register = (props) => {
                 "createdOn": "2021-12-12"
             }
 
-            return fetch("https://muirist.herokuapp.com/register", {
+            return fetch(`${server.base}/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -80,7 +81,7 @@ export const Register = (props) => {
                 <fieldset style={{
                     textAlign: "center"
                 }}>
-                    <button className="btn btn-1 btn-sep icon-send" type="submit">Register</button>
+                    <Button className="btn btn-1 btn-sep icon-send" type="submit">Register</Button>
                 </fieldset>
             </form>
             <section className="link--register">

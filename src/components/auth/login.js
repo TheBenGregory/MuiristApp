@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { Button } from "../globalStyles.js"
-
+import { server } from "../apiManager"
 
 export const Login = () => {
     const email = useRef()
@@ -12,7 +12,7 @@ export const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault()
 
-        return fetch("https://muirist.herokuapp.com/login", {
+        return fetch(`${server.base}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
