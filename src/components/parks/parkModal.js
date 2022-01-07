@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useRef, useCallback, } from "react"
-import { Link, useHistory } from 'react-router-dom'
 import { useSpring, animated } from 'react-spring';
 import { Background, ModalWrapper, ModalContent, ModalContentRight, CloseModalButton } from "./parkModalStyles.js"
 import { Button } from "../globalStyles.js"
-import { addSnippet, removeSnippet, getAllSnippets } from "../snippets/snippetManager.js";
-import { NewSnippet } from "../snippets/snippetModal.js"
+import { addSnippet, getAllSnippets } from "../snippets/snippetManager.js";
 
 export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
     const [snippets, setSnippets] = useState([])

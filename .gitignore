@@ -10,6 +10,7 @@
 
 # production
 /build
+parkApiKey/
 
 # misc
 .DS_Store

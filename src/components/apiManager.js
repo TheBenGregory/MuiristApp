@@ -1,5 +1,17 @@
+import { parkApi } from "./parkApiKey"
+
 export const server  = {
-    base: "https://muirist-server.herokuapp.com"
+    base: "http://localhost:8000"
+}
+
+// server.base:
+// https://muirist-server.herokuapp.com
+// http://localhost:8000
+
+
+export const parkApiData = () => {
+    return fetch(`${parkApi.base}?${parkApi.key}`)
+        .then(res => res.json())
 }
 
 export const createSnippet = (snippet) => {
