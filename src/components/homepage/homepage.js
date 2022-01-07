@@ -15,6 +15,7 @@ export const HomePage = () => {
     //     }
     // }, [input])
     const [imgUrl, setImgUrl] = useState([])
+    const [imgCaption, setImgCaption] = useState([])
 
     useEffect(() => {
         const fetchParks = async () => {
@@ -41,19 +42,25 @@ export const HomePage = () => {
 
     const randomImg = () => {
         
+
         const random = parks?.data[Math.floor(Math.random() * 50) + 1];
-        let imgUrl = random.images[0].url
+        let imgUrl = random.images[0].url;
+        let imgCaption = random.images[0].title
         setImgUrl(imgUrl);
+        setImgCaption(imgCaption)
     };
     console.log(parks);
 
     return (
         <>
             <div>
-                <div className="hero">
-                <img className="img" src={imgUrl} width="500px"/>
-
+                <div className="hero"> \
+                <figure>
+                <p><img className="img" src={imgUrl} width="500px" alt="`${imgCaption}`"/>
+                <figcaption>{imgCaption}</figcaption></p> 
+                </figure>
                 </div>
+                
                 <Link className="nav-link" to="/parks"><Content><Button>Explore the Parks</Button></Content></Link>
             </div>
         </>
