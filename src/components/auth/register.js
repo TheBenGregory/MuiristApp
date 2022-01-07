@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router"
 import { server } from '../apiManager'
-import { Button } from '../globalStyles'
+import { Button, Container } from '../globalStyles'
 
 export const Register = (props) => {
     const firstName = useRef()
@@ -81,7 +81,8 @@ export const Register = (props) => {
                 <fieldset style={{
                     textAlign: "center"
                 }}>
-                    <Button className="btn btn-1 btn-sep icon-send" type="submit">Register</Button>
+                    <Container>
+                    <Button className="btn btn-1 btn-sep icon-send" type="submit">Register</Button></Container>
                 </fieldset>
             </form>
             <section className="link--register">
