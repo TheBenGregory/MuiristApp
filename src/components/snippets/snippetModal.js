@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback, } from "react"
-import { useHistory, useParams } from "react-router-dom"
 import { useSpring, animated } from 'react-spring';
-import { createSnippet, getPark, getAllParks } from "../apiManager.js"
+import { createSnippet, getAllParks } from "../apiManager.js"
 import { Background, ModalWrapper, ModalContent, CloseModalButton } from "./snippetModalStyles.js"
 
 

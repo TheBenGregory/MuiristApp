@@ -1,6 +1,22 @@
+import { parkApi } from "./parkApiKey"
+
+export const server  = {
+    base: "http://localhost:8000"
+}
+
+// server.base:
+// https://muirist-server.herokuapp.com
+// http://localhost:8000
+
+
+export const parkApiData = () => {
+    return fetch(`${parkApi.base}?${parkApi.key}`)
+        .then(res => res.json())
+}
+
 export const createSnippet = (snippet) => {
     
-    return fetch(`http://localhost:8000/snippets`, {
+    return fetch(`${server.base}/snippets`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -13,7 +29,7 @@ export const createSnippet = (snippet) => {
 }
 
 export const getAllParks = () => {
-    return fetch("http://localhost:8000/parks", {
+    return fetch(`${server.base}/parks`, {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Token ${localStorage.getItem("muirist_id")}`
@@ -22,7 +38,7 @@ export const getAllParks = () => {
         .then(res => res.json())
 }
 export const getPark = (parkId) => {
-    return fetch(`http://localhost:8000/parks/${parkId}`, {
+    return fetch(`${server.base}/parks/${parkId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("muirist_id")}`
         }
@@ -31,7 +47,7 @@ export const getPark = (parkId) => {
 }
 
 export const getAllLists = () => {
-    return fetch(`http://localhost:8000/lists`, {
+    return fetch(`${server.base}/lists`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("muirist_id")}`
         }
@@ -41,7 +57,7 @@ export const getAllLists = () => {
 }
 
 export const getMyLists = () => {
-    return fetch(`http://localhost:8000/lists/myLists`, {
+    return fetch(`${server.base}/lists/myLists`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("muirist_id")}`
         }
