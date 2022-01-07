@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import "./snippets.css"
 import { Button, Content } from "../globalStyles";
 import { NewSnippet } from "./snippetModal";
-import { Container, Headline } from "./snippetModalStyles";
+import { Container, Headline } from "../globalStyles";
 
 
 export const Snippets = () => {

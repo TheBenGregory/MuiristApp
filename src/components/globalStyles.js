@@ -6,9 +6,16 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin:0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: nps_router;
     
   }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 `;
 
 export const Button = styled.button`
@@ -19,7 +26,7 @@ export const Button = styled.button`
   font-family: nps_router;
   border-radius: 6px;
   border: none;
-
+  align: center;
   background: #6E6D70;
   box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
   color: #DFDEDF;

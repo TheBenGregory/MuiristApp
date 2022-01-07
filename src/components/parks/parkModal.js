@@ -87,7 +87,7 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
                                     return <section key={snippet.id}>
                                         <div>
                                             <div>
-                                                <Button onClick={() => setContentView(!contentView)} value={snippet.id}>{snippet.title}</Button>
+                                                <div onClick={() => setContentView(!contentView)} value={snippet.id}>{snippet.title}</div>
                                             </div>
 
 
@@ -101,9 +101,9 @@ export const ParkModal = ({ showModal, setShowModal, parkId, showContent }) => {
                                     parkSnippets.map(snippet => {
                                         return <section key={snippet.id}>
                                             <div>
-                                                <Button onClick={showContent}>
+                                                <div onClick={showContent}>
                                                     <i>{snippet.content}</i>
-                                                </Button>
+                                                </div>
 
                                             </div>
                                            { snippet.added ? <div>Added!</div>
