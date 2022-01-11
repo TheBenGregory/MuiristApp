@@ -54,7 +54,7 @@ export const HomePage = () => {
     return (
         <>
             <div>
-                <div className="hero"> \
+                <div className="hero"> 
                 <figure>
                 <p><img className="img" src={imgUrl} width="500px" alt="`${imgCaption}`"/>
                 <figcaption>{imgCaption}</figcaption></p> 
