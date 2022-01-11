@@ -1,7 +1,7 @@
 import { parkApi } from "./parkApiKey"
 
 export const server  = {
-    base: "http://localhost:8000"
+    base: "https://muirist-server.herokuapp.com"
 }
 
 // server.base:
